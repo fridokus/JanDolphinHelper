@@ -4,16 +4,18 @@
 join:="F1"
 host:="F2"
 exit:="F3"
-title:="Ishiiruka-Dolphin  FM v5.9 BETA"
+title:="Ishiiruka-Dolphin"
 subTitle:="Dolphin NetPlay Setup"
 hostTitle:="Dolphin NetPlay"
 
 StartNetPlay() {
 	global
+    SetTitleMatchMode, 2
 	Run, %dolphin%
 	WinWaitActive, %title%
 	Sleep, 333
 	WinMenuSelectItem, %title%, , Tools, Start NetPlay...
+    SetTitleMatchMode, 3
 	WinWaitActive, %subTitle%
 	Sleep, 333
 	return
@@ -78,6 +80,8 @@ Host:
 return
 
 Exit:
+    SetTitleMatchMode, 2
 	IfWinExist, %title%
 		WinClose ;
+    SetTitleMatchMode, 3
 return
